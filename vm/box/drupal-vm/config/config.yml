@@ -1,0 +1,113 @@
+vagrant_hostname:               govcms8-vm.test
+vagrant_machine_name:           govcms8vm
+vagrant_ip:                     0.0.0.0
+
+vagrant_synced_folders:
+  - local_path:                 ./govCMS8
+    destination:                /var/www/drupalvm
+    type:                       nfs
+    create:                     true
+  - local_path:                 ./vm/box/drupal-vm/config
+    destination:                /var/www/site-php/settings
+    type:                       nfs
+    create:                     true
+  - local_path:                 ./backup
+    destination:                /var/www/backup
+    type:                       nfs
+    create:                     true
+
+# Memory and CPU to use for this VM.
+vagrant_memory:                 4096
+vagrant_cpus:                   2
+
+vagrant_plugins:
+  - name:                       vagrant-vbguest
+  - name:                       vagrant-hostsupdater
+  - name:                       vagrant-auto_network
+
+drupal_build_makefile:          false
+
+drupal_build_composer:          false
+drupal_build_composer_project:  false
+
+drupal_install_site:            false
+
+# Required Drupal settings.
+drupal_core_path:               "/var/www/drupalvm/docroot"
+drupal_db_user:                 govcms
+drupal_db_password:             govcms
+drupal_db_name:                 govcms8
+drupal_db_host:                 localhost
+
+drupal_major_version:           8
+drupal_site_name:               "govCMS8"
+drupal_install_profile:         govcms
+
+drush_launcher_install:         no
+drush_install_from_source:      yes
+drush_source_install_version:   "9.2.1"
+
+configure_drush_aliases:        true
+
+apache_vhosts:
+  - servername:                 "{{ drupal_domain }}"
+    serveralias:                "www.{{ drupal_domain }}"
+    documentroot:               "{{ drupal_core_path }}"
+    extra_parameters:           |
+        {{ apache_vhost_php_fpm_parameters }}
+        SetEnv ENV_LOCALDEV 1
+        SetEnv ENV_MEMCACHE 1
+
+  - servername:                 "pimpmylog.{{ vagrant_hostname }}"
+    documentroot:               "{{ pimpmylog_install_dir }}"
+    extra_parameters:           "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername:                 "{{ vagrant_ip }}"
+    serveralias:                "dashboard.{{ vagrant_hostname }}"
+    documentroot:               "{{ dashboard_install_dir }}"
+    extra_parameters:           "{{ apache_vhost_php_fpm_parameters }}"
+
+installed_extras:
+  - drupalconsole
+  - drush
+  - mailhog
+  - memcached
+  - pimpmylog
+  - solr
+  - upload-progress
+  - xdebug
+
+extra_packages:
+  - clamav
+  - htop
+  - unzip
+
+php_version:                    "7.1"
+php_max_execution_time:         180
+php_max_input_time:             300
+php_memory_limit:               "256M"
+
+# XDebug configuration. XDebug is disabled by default for better performance.
+php_xdebug_default_enable:      1
+php_xdebug_coverage_enable:     0
+php_xdebug_cli_enable:          1
+php_xdebug_remote_enable:       1
+php_xdebug_remote_connect_back: 1
+# Use PHPSTORM for PHPStorm
+php_xdebug_idekey:              PHPSTORM
+php_xdebug_max_nesting_level:   256
+php_xdebug_remote_host:         "{{ ansible_default_ipv4.gateway }}"
+
+# Solr Configuration.
+solr_xms:                       "128M"
+solr_xmx:                       "256M"
+
+# Other configuration.
+ssh_home:                       "{{ drupal_core_path }}"
+
+# Scripts.
+pre_provision_scripts:
+  - "../../../../box/drupal-vm/scripts/pre.sh"
+post_provision_scripts:
+  - "../../../../box/drupal-vm/scripts/solr.sh"
+  - "../../../../box/drupal-vm/scripts/post.sh"

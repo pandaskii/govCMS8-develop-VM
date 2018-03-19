@@ -1,7 +1,7 @@
 # govCMS8 Develop VM
 
 ### Requirements
-- [ansible](https://www.ansible.com/)
+- [ansible](https://www.ansible.com/) (macOS/Linux only)
 - [virtualbox](https://www.virtualbox.org/wiki/Downloads)
 - [vagrant](https://www.vagrantup.com/)
 - [git](https://git-scm.com/)

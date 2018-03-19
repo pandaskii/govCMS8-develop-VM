@@ -23,9 +23,9 @@ If you're running [Homebrew](http://brew.sh/index.html) on Mac OSX, this is as s
     
 ### Clone the site
 
-```cd``` into this project directory
+    ```cd``` into this project directory
 
-```git clone -b 1.x git@github.com:govCMS/govCMS8.git```
+    ```git clone -b 1.x git@github.com:govCMS/govCMS8.git```
 
 Then you can follow the site install instructuions from https://github.com/govCMS/govCMS8
 
@@ -33,6 +33,8 @@ Then you can follow the site install instructuions from https://github.com/govCM
     composer install
 
 ### Boot the VM
+
+```cd``` into this project ```vm``` directory then run ```composer install``` (first time)
 
 ```cd``` into this project directory then run ```vagrant up```
 

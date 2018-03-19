@@ -20,10 +20,21 @@ If you're running [Homebrew](http://brew.sh/index.html) on Mac OSX, this is as s
     brew tap caskroom/cask
     brew install ansible
     brew cask install virtualbox vagrant
+    
+### Clone the site
+
+```cd``` into this project directory
+
+```git clone -b 1.x git@github.com:govCMS/govCMS8.git```
+
+Then you can follow the site install instructuions from https://github.com/govCMS/govCMS8
+
+    cd govCMS8
+    composer install
 
 ### Boot the VM
 
-```cd``` into this project vm directory then run ```vagrant up```
+```cd``` into this project directory then run ```vagrant up```
 
 For the first time installition, you will be asked for installing plugins.
 

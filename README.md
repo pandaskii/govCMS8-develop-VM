@@ -1,7 +1,9 @@
 # govCMS8 Develop VM
 
 ### Requirements
-- [yarn](https://yarnpkg.com/)
+- [ansible](https://www.ansible.com/)
+- [virtualbox](https://www.virtualbox.org/wiki/Downloads)
+- [vagrant](https://www.vagrantup.com/)
 - [git](https://git-scm.com/)
 
 ## Work with it locally

@@ -73,6 +73,7 @@ installed_extras:
   - mailhog
   - memcached
   - pimpmylog
+  - selenium
   - solr
   - upload-progress
   - xdebug

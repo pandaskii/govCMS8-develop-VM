@@ -56,10 +56,6 @@ Then you can follow the instructions on the screen to boot the VM up.
 
 Run the headless chrome in guest machine at first
 
-```google-chrome-stable --disable-gpu --headless --remote-debugging-address=0.0.0.0 --remote-debugging-port=9222```
-
-or
-
 ```google-chrome-stable --headless --remote-debugging-address=0.0.0.0 --remote-debugging-port=9222 --window-size=1280,1696```
 
 List the existing Behat syntaxes

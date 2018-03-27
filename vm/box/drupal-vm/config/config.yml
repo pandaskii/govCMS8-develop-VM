@@ -11,8 +11,12 @@ vagrant_synced_folders:
     destination:                /var/www/site-php/settings
     type:                       nfs
     create:                     true
-  - local_path:                 ./tests
-    destination:                /var/www/tests
+  - local_path:                 ./tests/behat
+    destination:                /var/www/tests/behat
+    type:                       nfs
+    create:                     true
+  - local_path:                 ./tests/screenshots
+    destination:                /var/www/drupalvm/tests/screenshots
     type:                       nfs
     create:                     true
   - local_path:                 ./backup

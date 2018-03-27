@@ -7,8 +7,12 @@ vagrant_synced_folders:
     destination:                /var/www/drupalvm
     type:                       nfs
     create:                     true
-  - local_path:                 ./vm/box/drupal-vm/config
+  - local_path:                 ./vm/box/drupal-vm/sites
     destination:                /var/www/site-php/settings
+    type:                       nfs
+    create:                     true
+  - local_path:                 ./tests
+    destination:                /var/www/tests
     type:                       nfs
     create:                     true
   - local_path:                 ./backup
@@ -91,7 +95,7 @@ php_packages_extra:
   - "php{{ php_version }}-mbstring"
   - "php{{ php_version }}-imagick"
   - imagemagick
-  
+
 php_max_execution_time:         180
 php_max_input_time:             300
 php_memory_limit:               "256M"

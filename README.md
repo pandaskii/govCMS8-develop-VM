@@ -1,6 +1,6 @@
 # govCMS8 Develop VM
 
-### Requirements
+## Requirements
 - [ansible](https://www.ansible.com/) (macOS/Linux only)
 - [virtualbox](https://www.virtualbox.org/wiki/Downloads)
 - [vagrant](https://www.vagrantup.com/)
@@ -22,7 +22,7 @@ If you're running [Homebrew](http://brew.sh/index.html) on Mac OSX, this is as s
     brew tap caskroom/cask
     brew install ansible
     brew cask install virtualbox vagrant
-    
+
 ### Clone the site
 
     ```cd``` into this project directory
@@ -49,4 +49,15 @@ Then you can follow the instructions on the screen to boot the VM up.
 ### Knowing issues
 
  * [Virtualbox 5.2.0 and Vagrant 2.0.0](https://github.com/hashicorp/vagrant/issues/9090)
- 
+
+### Tests
+
+#### Local behat testing with VM
+
+Run the headless chrome in guest machine at first
+
+```google-chrome-stable --disable-gpu --headless --remote-debugging-address=0.0.0.0 --remote-debugging-port=9222```
+
+or
+
+```google-chrome-stable --headless --remote-debugging-address=0.0.0.0 --remote-debugging-port=9222 --window-size=1280,1696```
